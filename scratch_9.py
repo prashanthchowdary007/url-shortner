@@ -1,5 +1,6 @@
 import hashlib
 import string
+import webbrowser
 
 class URLShortener:
     def __init__(self):
@@ -31,16 +32,34 @@ class URLShortener:
         # Look up the original URL from the dictionary
         return self.url_dict.get(short_url, None)
 
+
+
+# Driver code
 # Create a URLShortener instance
 url_shortener = URLShortener()
 
-# Prompt the user to enter a long URL
-long_url = input('Enter a long URL to shorten: ')
+while True:
+    print("To make URL Shot press : 1")
+    print("Redirect to web with ShoutUrl: 2")
+    opt = int(input("Enter the option : "))
 
-# Shorten the URL
-short_url = url_shortener.shorten(long_url)
-
-# Print the shortened URL
-print('The Short URL is:', short_url)
+    if opt == 1:
+        # Prompt the user to enter a long URL
+        long_url = input('Enter a long URL to shorten: ')
+        
+        # Shorten the URL
+        short_url = url_shortener.shorten(long_url)
+        
+        # Print the shortened URL
+        print('The Short URL is:', short_url)
+    elif opt == 2:
+        shotUrl = input("Enter the ShotUrl : ")
+        expUrl = url_shortener.expand(shotUrl)
+        print("expUrl")
+        webbrowser.open(expUrl)
+    else:
+        print("You are Entered the incorrect option.....!")
+        
+        
 
 #https://youtu.be/VuG7ge_8I2Y
